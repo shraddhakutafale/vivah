@@ -8,6 +8,9 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { LayoutModule } from './layout/layout.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
+        NgbModule ,// Import NgBootstrap module here
+
     LayoutModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([], {

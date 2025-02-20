@@ -1,0 +1,134 @@
+<div class="modal-content">
+    <div
+      class="modal-header d-flex flex-column align-items-center justify-content-center position-relative"
+      [ngClass]="{ 'border-bottom-0': isFormVisible }"
+    >
+      <!-- Profile Image and Modal Title Section (Hidden when form is visible) -->
+      <div *ngIf="!isFormVisible" class="text-center">
+        <!-- Profile Image in Circle -->
+        <img
+          src="assets/img/logo.png"
+          alt="Profile"
+          class="rounded-circle mb-3"
+          style="width: 80px; height: 80px; object-fit: cover; display: block; margin: 0 auto;"
+        />
+  
+        <!-- Modal Title -->
+        <h5 class="modal-title mt-2" id="selectPageModalLabel" style="color: var(--bs-dark);">
+          This Profile Is For
+        </h5>
+      </div>
+  
+      <!-- Close Button (Hidden when form is visible) -->
+      <button
+        *ngIf="!isFormVisible"
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="closeModal()"
+        style="position: absolute; right: 20px; top: 15px;"
+      ></button>
+    </div>
+  
+    <div class="modal-body text-center">
+      <!-- Initial Chips Section (Visible only when form is not visible) -->
+      <div *ngIf="!isFormVisible" class="d-flex flex-wrap justify-content-start gap-2 mb-4">
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('Myself')" class="radio-input" /> Myself
+        </label>
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('My Son')" class="radio-input" /> My Son
+        </label>
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('My Daughter')" class="radio-input" /> My Daughter
+        </label>
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('My Brother')" class="radio-input" /> My Brother
+        </label>
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('My Sister')" class="radio-input" /> My Sister
+        </label>
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('My Friend')" class="radio-input" /> My Friend
+        </label>
+        <label class="btn btn-light text-dark rounded-pill custom-chip">
+          <input type="radio" name="profileType" (change)="showGenderChips('My Relative')" class="radio-input" /> My Relative
+        </label>
+      </div>
+  
+      <!-- Gender Chips Section -->
+      <div *ngIf="isGenderChipsVisible && !isFormVisible" class="mt-4 text-start">
+        <h5 class="text-dark mb-3">{{ genderHeading }}</h5>
+        <div class="d-flex flex-wrap gap-2">
+          <label class="btn btn-light text-dark rounded-pill custom-chip">
+            <input type="radio" name="gender" value="Male" class="radio-input" (change)="selectGender('Male')" /> Male
+          </label>
+          <label class="btn btn-light text-dark rounded-pill custom-chip">
+            <input type="radio" name="gender" value="Female" class="radio-input" (change)="selectGender('Female')" />
+            Female
+          </label>
+        </div>
+      </div>
+  
+      <!-- Continue Button (Only for My Son, My Daughter, My Brother, My Sister) -->
+      <div *ngIf="isContinueButtonVisible && !isGenderChipsVisible" class="mt-4">
+        <!-- Continue Button -->
+<button *ngIf="isContinueButtonVisible" class="continue-btn" (click)="continueToForm()">Continue</button>
+
+      </div>
+  
+      <!-- Form Section (Only visible after selecting gender) -->
+      <div *ngIf="isFormVisible" class="mt-4" style="max-width: 350px; margin: 0 auto;">
+        <!-- Back Button (Only back arrow) -->
+        <button
+          type="button"
+          class="btn btn-light text-dark mb-3"
+          (click)="goBack()"
+          style="position: absolute; left: 20px; background-color: transparent; border: none;"
+        >
+          <i class="bi bi-arrow-left-circle" style="font-size: 24px;"></i>
+        </button>
+  
+        <form>
+          <!-- Profile Image -->
+          <div class="mb-3 text-center">
+            <img
+              src="assets/img/logo.png"
+              alt="Profile"
+              class="rounded-circle mb-3"
+              style="width: 80px; height: 80px; object-fit: cover;"
+            />
+          </div>
+  
+          <!-- Dynamic Heading -->
+          <h5 class="text-dark mb-3">{{ formHeading }}</h5>
+  
+          <!-- First Name -->
+          <div class="mb-3">
+            <input type="text" id="firstName" class="form-control" placeholder="First Name" />
+          </div>
+  
+          <!-- Last Name -->
+          <div class="mb-3">
+            <input type="text" id="lastName" class="form-control" placeholder="Last Name" />
+          </div>
+  
+          <!-- Date of Birth -->
+          <h5 class="text-dark mb-3">Date of Birth</h5>
+          <div class="mb-3">
+            <input type="date" id="dob" class="form-control" />
+          </div>
+  
+          <!-- Save Button -->
+          <button
+            type="submit"
+            class="btn btn-primary rounded-pill w-50 mx-auto d-block mt-4"
+            style="padding: 0.5rem 1.5rem;"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

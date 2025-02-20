@@ -1,0 +1,84 @@
+.logo {
+    text-decoration: none; /* Removes underline from the link */
+    border: none; /* Removes any border */
+    box-shadow: none; /* Ensures there's no shadow effect */
+  }
+
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -100%; /* Initially hidden off the screen */
+    width: 250px; /* Sidebar width */
+    height: 100vh; /* Full height */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+    transition: left 0.3s ease-in-out;/* Smooth slide-in effect */
+}
+/* When the sidebar is open */
+.sidebar.open {
+    left: 0;/* Move to the left side of the screen */
+}
+/* Sidebar Menu */
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #fff; /* Text color for the menu */
+}
+.sidebar-nav li {
+    padding: 15px 20px;
+    cursor: pointer;
+}
+.sidebar-nav a {
+    text-decoration: none;
+    color: #fff; /* Change link color to white for contrast */
+}
+
+/* Active Menu Item */
+.sidebar-nav .active {
+    font-weight: bold;
+    color: #ffc107;/* Highlight active link */
+}
+/* Mobile Nav Toggle Button */
+.mobile-nav-toggle {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+/* Change icon color when sidebar is open */
+.mobile-nav-toggle.bi-x {
+    color: #fff;
+}
+/* Media Query for Larger Screens */
+@media (min-width: 992px) {
+    .sidebar {
+        display: none;/* Hide sidebar on larger screens */
+    }
+
+    .navmenu {
+        display: block;
+    }
+
+    .mobile-nav-toggle {
+        display: none; /* Hide the toggle button on larger screens */
+    }
+}
+
+/* Overlay to close the sidebar when clicking outside */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+    z-index: 1040; /* Just below the sidebar */
+}
+

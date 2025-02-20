@@ -290,6 +290,8 @@ h6 {
 
 .header .logo {
   line-height: 1;
+  border: none; /* Removes any border */
+
 }
 
 .header .logo img {
@@ -298,9 +300,9 @@ h6 {
 }
 
 .header .logo h1 {
-  font-size: 30px;
+  font-size: 35px;
   margin: 0;
-  font-weight: 700;
+  font-weight: 750;
   color: var(--heading-color);
 }
 
@@ -696,7 +698,7 @@ h6 {
 
 .page-title .heading {
   padding: 160px 0 60px 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
 .page-title .heading h1 {
@@ -794,7 +796,7 @@ section,
 
 .hero .carousel {
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 0;
   margin: 0;
   background-color: var(--background-color);
@@ -822,7 +824,7 @@ section,
 
 .hero .carousel-item:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 50%);
+  background: color-mix(in srgb, var(--background-color), transparent 100%);
   position: absolute;
   inset: 0;
   z-index: 2;

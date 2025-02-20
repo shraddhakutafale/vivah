@@ -1,0 +1,28 @@
+.continue-btn {
+    display: block;
+    margin: 20px auto; /* Center the button horizontally */
+    padding: 10px 20px; /* Add padding to make the button smaller */
+    font-size: 14px; /* Small font size */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  .continue-btn:hover {
+    background-color: #0056b3; /* Darken the background on hover */
+  }
+  /* For all form-control inputs in the modal */
+.modal-content .form-control {
+    height: 50px; /* Adjust the height as needed */
+    font-size: 1.1rem; /* Optional: Adjust font size for better alignment */
+    padding: 0.5rem; /* Optional: Adjust padding for better spacing */
+  }
+  /* Add margin-bottom to the form */
+.modal-content form {
+    margin-bottom: 30px; /* Adjust the value as needed */
+  }
+  

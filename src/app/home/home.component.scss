@@ -1,0 +1,53 @@
+
+  /* Decrease height on smaller screens */
+  @media (max-width: 768px) {
+    #hero {
+      height: 90vh; /* 70% of the viewport height */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    #hero {
+      height: 75vh; /* 50% of the viewport height */
+    }
+  }
+  
+  .carousel-container {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .carousel-container h2 {
+    font-size: 2.5rem;
+  }
+  
+  .carousel-container p {
+    font-size: 1.25rem;
+  }
+  
+
+  /* Hover effect to rotate icon */
+// .icon-wrapper {
+//     transition: transform 0.3s ease-in-out; /* Smooth transition */
+//   }
+  
+//   .icon-wrapper:hover {
+//     transform: rotate(360deg); /* Rotate 360 degrees */
+//   }
+  
+
+  /* Add zoom effect to the entire card on hover */
+.zoom-card {
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .zoom-card:hover {
+    transform: scale(1.05); /* Small zoom effect (increase scale) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for emphasis */
+  }
+  

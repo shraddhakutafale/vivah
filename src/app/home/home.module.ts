@@ -5,11 +5,13 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SelectPageCategoryComponent } from './select-page-category/select-page-category.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    SelectPageCategoryComponent,
   ],
   imports: [
     CommonModule,
