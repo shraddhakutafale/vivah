@@ -1,0 +1,89 @@
+<mat-card class="p-4 shadow-sm rounded-3">
+
+  <h5 class="fw-semibold mb-3">Religion Information</h5>
+
+  <div class="row">
+
+    <!-- Religion -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Religion</label>
+      <select class="form-select" [(ngModel)]="religion" (change)="onReligionChange()">
+        <option value="">Select Religion</option>
+        <option value="hindu">Hindu</option>
+        <option value="muslim">Muslim</option>
+      </select>
+    </div>
+
+    <!-- Caste -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Caste</label>
+      <select class="form-select" [(ngModel)]="caste">
+        <option value="">Select Caste</option>
+        <option *ngFor="let c of casteOptions" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <!-- ✅ Select Community -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Select Community</label>
+      <select class="form-select" [(ngModel)]="community">
+        <option value="">Select Community</option>
+        <option *ngFor="let com of communityOptions" [value]="com">{{ com }}</option>
+      </select>
+    </div>
+
+    <!-- Stars -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Stars</label>
+      <select class="form-select" [(ngModel)]="stars">
+        <option value="">Select Star</option>
+        <option *ngFor="let s of starOptions" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <!-- Rashi / Moon Sign -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Rashi / Moon Sign</label>
+      <select class="form-select" [(ngModel)]="rashi">
+        <option value="">Select Rashi</option>
+        <option *ngFor="let r of rashiOptions" [value]="r">{{ r }}</option>
+      </select>
+    </div>
+
+    <!-- Zodiac -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Zodiac</label>
+      <select class="form-select" [(ngModel)]="zodiac">
+        <option value="">Select Zodiac</option>
+        <option *ngFor="let z of zodiacOptions" [value]="z">{{ z }}</option>
+      </select>
+    </div>
+
+    <!-- Having Dosh -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Having Dosh</label>
+      <select class="form-select" [(ngModel)]="havingDosh">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="dontknow">Don't Know</option>
+      </select>
+    </div>
+
+    <!-- Willing to Marry Other Communities -->
+    <div class="col-md-4 mb-3 d-flex align-items-center">
+      <label class="form-label me-2 mb-0">Willing to Marry Other Communities</label>
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="willingOtherCommunity">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-end gap-3 mt-3">
+    <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+    <button class="btn-danger-red" (click)="goNext()">Save & Next</button>
+  </div>
+
+</mat-card>

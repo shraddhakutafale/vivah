@@ -753,41 +753,6 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Global Section Titles
---------------------------------------------------------------*/
-.section-title {
-  text-align: center;
-  padding-bottom: 60px;
-  position: relative;
-}
-
-.section-title h2 {
-  font-size: 13px;
-  letter-spacing: 1px;
-  font-weight: 700;
-  padding: 8px 20px;
-  margin: 0;
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
-  color: var(--accent-color);
-  display: inline-block;
-  text-transform: uppercase;
-  border-radius: 50px;
-  font-family: var(--default-font);
-}
-
-.section-title div {
-  color: var(--heading-color);
-  margin: 10px 0 0 0;
-  font-size: 32px;
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-
-.section-title div .description-title {
-  color: var(--accent-color);
-}
-
-/*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
 .hero {

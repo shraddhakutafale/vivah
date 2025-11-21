@@ -42,4 +42,13 @@ export class HeaderComponent {
     this.closeNavMenu(); // Close the sidebar
     this.router.navigate(['/']); // Navigate to the home page
   }
+
+    goToProfile(): void {
+    this.closeNavMenu(); // Close the sidebar
+    this.router.navigate(['/my-profile']); // Navigate to the home page
+  }
+    goToLogin(): void {
+    this.closeNavMenu(); // Close the sidebar
+    this.router.navigate(['/']); // Navigate to the home page
+  }
 }

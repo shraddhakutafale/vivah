@@ -1,0 +1,20 @@
+<mat-card class="p-4 shadow-sm rounded-3">
+  <h5 class="fw-semibold mb-3">About My Family</h5>
+
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <label class="form-label">Write About Your Family</label>
+      <textarea
+        class="form-control"
+        rows="5"
+        placeholder="Describe your family background, values, and lifestyle..."
+        [(ngModel)]="aboutMyFamily">
+      </textarea>
+    </div>
+  </div>
+<div class="d-flex justify-content-end gap-3 mt-3">
+  <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+  <button class="btn-danger-red" (click)="goNext()">Save & Next</button>
+</div>
+
+</mat-card>

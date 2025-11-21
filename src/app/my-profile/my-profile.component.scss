@@ -1,0 +1,80 @@
+body {
+  background: #fff !important;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ccc;
+}
+
+/* Section Title */
+.section-title {
+  font-weight: 700;
+  color: #A01A1A;
+  margin: 0;
+}
+
+/* Header Row (Title + Edit Icon) */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-icon {
+  font-size: 18px;
+  cursor: pointer;
+  color: #B7352C;
+}
+
+.edit-icon:hover {
+  color: #8a2420;
+}
+
+/* Info List */
+.info-list li {
+  text-align: left;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+/* Name Heading */
+.name-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #B7352C;
+  margin-bottom: 10px;
+}
+
+/* About text */
+.section-text {
+  font-size: 15px;
+  text-align: justify;
+}
+
+/* Vertical dashed divider */
+.v-divider {
+  width: 1px;
+  height: 100%;
+  border-left: 2px dashed #b5b5b5;
+}
+.left-box h3 {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+
+/* Responsive Fix (Mobile) */
+@media (max-width: 768px) {
+  .v-divider {
+    display: none; /* hide on mobile */
+  }
+  .name-title {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+}

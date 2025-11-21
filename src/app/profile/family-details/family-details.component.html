@@ -1,0 +1,91 @@
+<mat-card class="p-4 shadow-sm rounded-3">
+  <h5 class="fw-semibold mb-3">Family Details</h5>
+
+  <div class="row">
+    <!-- Family Value -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Family Value</label>
+      <select class="form-select" [(ngModel)]="familyValue">
+        <option value="">Select</option>
+        <option *ngFor="let val of familyValueOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- Family Type -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Family Type</label>
+      <select class="form-select" [(ngModel)]="familyType">
+        <option value="">Select</option>
+        <option *ngFor="let val of familyTypeOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- Family Status -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Family Status</label>
+      <select class="form-select" [(ngModel)]="familyStatus">
+        <option value="">Select</option>
+        <option *ngFor="let val of familyStatusOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- Family Income -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Family Income</label>
+      <select class="form-select" [(ngModel)]="familyIncome">
+        <option value="">Select</option>
+        <option *ngFor="let val of familyIncomeOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- Father's Occupation -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Father's Occupation</label>
+      <select class="form-select" [(ngModel)]="fatherOccupation">
+        <option value="">Select</option>
+        <option *ngFor="let val of fatherOccupationOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- Mother's Occupation -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Mother's Occupation</label>
+      <select class="form-select" [(ngModel)]="motherOccupation">
+        <option value="">Select</option>
+        <option *ngFor="let val of motherOccupationOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- No. of Brothers -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">No. of Brothers</label>
+      <select class="form-select" [(ngModel)]="noOfBrothers">
+        <option value="">Select</option>
+        <option *ngFor="let val of numberOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- No. of Sisters -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">No. of Sisters</label>
+      <select class="form-select" [(ngModel)]="noOfSisters">
+        <option value="">Select</option>
+        <option *ngFor="let val of numberOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+
+    <!-- Sisters Married -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Sisters Married</label>
+      <select class="form-select" [(ngModel)]="sistersMarried">
+        <option value="">Select</option>
+        <option *ngFor="let val of sistersMarriedOptions" [value]="val">{{ val }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end gap-3 mt-3">
+    <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+    <button class="btn-danger-red" (click)="goNext()">Save & Next</button>
+  </div>
+</mat-card>

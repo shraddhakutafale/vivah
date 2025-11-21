@@ -1,37 +1,22 @@
-<div class="modal-content">
-    <div
-      class="modal-header d-flex flex-column align-items-center justify-content-center position-relative"
-      [ngClass]="{ 'border-bottom-0': isFormVisible }"
-    >
-      <!-- Profile Image and Modal Title Section (Hidden when form is visible) -->
+<div class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header d-flex flex-column align-items-center justify-content-center position-relative"
+      [ngClass]="{ 'border-bottom-0': isFormVisible }">
       <div *ngIf="!isFormVisible" class="text-center">
-        <!-- Profile Image in Circle -->
-        <img
-          src="assets/img/logo.png"
-          alt="Profile"
-          class="rounded-circle mb-3"
-          style="width: 80px; height: 80px; object-fit: cover; display: block; margin: 0 auto;"
-        />
-  
-        <!-- Modal Title -->
-        <h5 class="modal-title mt-2" id="selectPageModalLabel" style="color: var(--bs-dark);">
+        <img src="assets/img/av1.jpg" alt="Profile" class="rounded-circle mb-3"
+          style="width: 80px; height: 80px; object-fit: cover; display: block; margin: 0 auto;" />
+
+        <h5 class="modal-title mt-2" id="selectPageModalLabel" style="color: white;">
           This Profile Is For
         </h5>
+
       </div>
-  
-      <!-- Close Button (Hidden when form is visible) -->
-      <button
-        *ngIf="!isFormVisible"
-        type="button"
-        class="btn-close"
-        aria-label="Close"
-        (click)="closeModal()"
-        style="position: absolute; right: 20px; top: 15px;"
-      ></button>
+
+      <button *ngIf="!isFormVisible" type="button" class="btn-close" aria-label="Close" (click)="closeModal()"
+        style="position: absolute; right: 20px; top: 15px;"></button>
     </div>
-  
+
     <div class="modal-body text-center">
-      <!-- Initial Chips Section (Visible only when form is not visible) -->
       <div *ngIf="!isFormVisible" class="d-flex flex-wrap justify-content-start gap-2 mb-4">
         <label class="btn btn-light text-dark rounded-pill custom-chip">
           <input type="radio" name="profileType" (change)="showGenderChips('Myself')" class="radio-input" /> Myself
@@ -40,22 +25,27 @@
           <input type="radio" name="profileType" (change)="showGenderChips('My Son')" class="radio-input" /> My Son
         </label>
         <label class="btn btn-light text-dark rounded-pill custom-chip">
-          <input type="radio" name="profileType" (change)="showGenderChips('My Daughter')" class="radio-input" /> My Daughter
+          <input type="radio" name="profileType" (change)="showGenderChips('My Daughter')" class="radio-input" /> My
+          Daughter
         </label>
         <label class="btn btn-light text-dark rounded-pill custom-chip">
-          <input type="radio" name="profileType" (change)="showGenderChips('My Brother')" class="radio-input" /> My Brother
+          <input type="radio" name="profileType" (change)="showGenderChips('My Brother')" class="radio-input" /> My
+          Brother
         </label>
         <label class="btn btn-light text-dark rounded-pill custom-chip">
-          <input type="radio" name="profileType" (change)="showGenderChips('My Sister')" class="radio-input" /> My Sister
+          <input type="radio" name="profileType" (change)="showGenderChips('My Sister')" class="radio-input" /> My
+          Sister
         </label>
         <label class="btn btn-light text-dark rounded-pill custom-chip">
-          <input type="radio" name="profileType" (change)="showGenderChips('My Friend')" class="radio-input" /> My Friend
+          <input type="radio" name="profileType" (change)="showGenderChips('My Friend')" class="radio-input" /> My
+          Friend
         </label>
         <label class="btn btn-light text-dark rounded-pill custom-chip">
-          <input type="radio" name="profileType" (change)="showGenderChips('My Relative')" class="radio-input" /> My Relative
+          <input type="radio" name="profileType" (change)="showGenderChips('My Relative')" class="radio-input" /> My
+          Relative
         </label>
       </div>
-  
+
       <!-- Gender Chips Section -->
       <div *ngIf="isGenderChipsVisible && !isFormVisible" class="mt-4 text-start">
         <h5 class="text-dark mb-3">{{ genderHeading }}</h5>
@@ -69,66 +59,92 @@
           </label>
         </div>
       </div>
-  
+
       <!-- Continue Button (Only for My Son, My Daughter, My Brother, My Sister) -->
       <div *ngIf="isContinueButtonVisible && !isGenderChipsVisible" class="mt-4">
         <!-- Continue Button -->
-<button *ngIf="isContinueButtonVisible" class="continue-btn" (click)="continueToForm()">Continue</button>
+        <button *ngIf="isContinueButtonVisible" class="btn-danger-red" (click)="continueToForm()">Continue</button>
 
       </div>
-  
-      <!-- Form Section (Only visible after selecting gender) -->
-      <div *ngIf="isFormVisible" class="mt-4" style="max-width: 350px; margin: 0 auto;">
-        <!-- Back Button (Only back arrow) -->
-        <button
-          type="button"
-          class="btn btn-light text-dark mb-3"
-          (click)="goBack()"
-          style="position: absolute; left: 20px; background-color: transparent; border: none;"
-        >
-          <i class="bi bi-arrow-left-circle" style="font-size: 24px;"></i>
-        </button>
-  
-        <form>
-          <!-- Profile Image -->
-          <div class="mb-3 text-center">
-            <img
-              src="assets/img/logo.png"
-              alt="Profile"
-              class="rounded-circle mb-3"
-              style="width: 80px; height: 80px; object-fit: cover;"
-            />
-          </div>
-  
-          <!-- Dynamic Heading -->
-          <h5 class="text-dark mb-3">{{ formHeading }}</h5>
-  
-          <!-- First Name -->
-          <div class="mb-3">
-            <input type="text" id="firstName" class="form-control" placeholder="First Name" />
-          </div>
-  
-          <!-- Last Name -->
-          <div class="mb-3">
-            <input type="text" id="lastName" class="form-control" placeholder="Last Name" />
-          </div>
-  
-          <!-- Date of Birth -->
-          <h5 class="text-dark mb-3">Date of Birth</h5>
-          <div class="mb-3">
-            <input type="date" id="dob" class="form-control" />
-          </div>
-  
-          <!-- Save Button -->
-          <button
-            type="submit"
-            class="btn btn-primary rounded-pill w-50 mx-auto d-block mt-4"
-            style="padding: 0.5rem 1.5rem;"
-          >
-            Save
-          </button>
-        </form>
-      </div>
+
+     <div *ngIf="isFormVisible" class="mt-4 mx-auto" style="max-width: 350px;">
+  <!-- Back Button -->
+  <button
+    type="button"
+    class="btn position-absolute start-0 ms-3 mb-3 border-0 bg-transparent text-white"
+    (click)="goBack()"
+  >
+    <i class="bi bi-arrow-left-circle fs-3 text-white"></i>
+  </button>
+
+  <form>
+    <!-- Profile Image with Edit Icon -->
+    <div class="mb-3 text-center position-relative d-inline-block">
+      <img
+        id="profileImage"
+        src="assets/img/av1.jpg"
+        alt="Profile"
+        class="rounded-circle mb-3 border border-2 border-secondary"
+        style="width: 80px; height: 80px; object-fit: cover;"
+      />
+
+      <!-- Hidden File Input -->
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        class="d-none"
+        onchange="previewImage(event)"
+      />
+
+      <!-- Edit Icon -->
+      <button
+        type="button"
+        class="btn btn-light border position-absolute p-1 d-flex align-items-center justify-content-center shadow-sm rounded-circle"
+        style="bottom: 10px; right: 5px; width: 28px; height: 28px;"
+        onclick="document.getElementById('fileInput').click()"
+      >
+        <i class="bi bi-pencil-fill text-danger fs-6"></i>
+      </button>
     </div>
-  </div>
-  
+
+    <!-- Dynamic Heading -->
+    <h5 class="text-dark mb-3 fw-semibold">{{ formHeading }}</h5>
+
+    <!-- First Name -->
+    <div class="mb-3">
+      <input type="text" id="firstName" class="form-control" placeholder="First Name" />
+    </div>
+
+    <!-- Last Name -->
+    <div class="mb-3">
+      <input type="text" id="lastName" class="form-control" placeholder="Last Name" />
+    </div>
+
+    <!-- Mobile Number -->
+    <div class="mb-3">
+      <input
+        type="tel"
+        id="mobileNo"
+        class="form-control"
+        placeholder="Mobile Number"
+        maxlength="10"
+        pattern="[0-9]{10}"
+        title="Enter 10-digit mobile number"
+      />
+    </div>
+
+    <!-- Date of Birth -->
+    <h5 class="text-dark mb-2 fw-semibold">Date of Birth</h5>
+    <div class="mb-3">
+      <input type="date" id="dob" class="form-control" />
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="btn btn-danger px-4 py-2">
+      Save
+    </button>
+  </form>
+</div>
+
+    </div>

@@ -1,0 +1,138 @@
+<mat-card class="p-4 shadow-sm rounded-3">
+
+  <h5 class="fw-semibold mb-3">Partner's Preference</h5>
+
+  <div class="row">
+
+    <!-- City -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">City</label>
+      <input type="text" class="form-control" placeholder="Enter City" [(ngModel)]="city"/>
+    </div>
+
+    <!-- Working Status -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Working Status</label>
+      <select class="form-select" [(ngModel)]="workingStatus">
+        <option value="">Select</option>
+        <option *ngFor="let w of workingOptions" [value]="w">{{ w }}</option>
+      </select>
+    </div>
+
+    <!-- Education -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Education</label>
+      <select class="form-select" [(ngModel)]="education">
+        <option value="">Select</option>
+        <option *ngFor="let e of educationOptions" [value]="e">{{ e }}</option>
+      </select>
+    </div>
+
+    <!-- Salary Range -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Salary Range</label>
+      <select class="form-select" [(ngModel)]="salaryRange">
+        <option value="">Select</option>
+        <option *ngFor="let s of salaryOptions" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <!-- Height Range -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Height Range</label>
+      <select class="form-select" [(ngModel)]="heightRange">
+        <option value="">Select</option>
+        <option *ngFor="let h of heightOptions" [value]="h">{{ h }}</option>
+      </select>
+    </div>
+
+    <!-- Age Range -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Age Range</label>
+      <select class="form-select" [(ngModel)]="ageRange">
+        <option value="">Select</option>
+        <option *ngFor="let a of ageOptions" [value]="a">{{ a }}</option>
+      </select>
+    </div>
+
+    <!-- Marital Status -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Marital Status</label>
+      <select class="form-select" [(ngModel)]="maritalStatus">
+        <option value="">Select</option>
+        <option *ngFor="let m of maritalStatusOptions" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+
+    <!-- Mother Tongue -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Mother Tongue</label>
+      <select class="form-select" [(ngModel)]="motherTongue">
+        <option value="">Select</option>
+        <option *ngFor="let mt of motherTongueOptions" [value]="mt">{{ mt }}</option>
+      </select>
+    </div>
+
+    <!-- Physical Status -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Physical Status</label>
+      <select class="form-select" [(ngModel)]="physicalStatus">
+        <option value="">Select</option>
+        <option *ngFor="let ps of physicalStatusOptions" [value]="ps">{{ ps }}</option>
+      </select>
+    </div>
+
+    <!-- Body Type -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Body Type</label>
+      <select class="form-select" [(ngModel)]="bodyType">
+        <option value="">Select</option>
+        <option *ngFor="let bt of bodyTypeOptions" [value]="bt">{{ bt }}</option>
+      </select>
+    </div>
+
+    <!-- Profile Created By -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Profile Created By</label>
+      <select class="form-select" [(ngModel)]="profileCreatedBy">
+        <option value="">Select</option>
+        <option *ngFor="let pc of profileCreatedByOptions" [value]="pc">{{ pc }}</option>
+      </select>
+    </div>
+
+    <!-- Eating Habits -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Eating Habits</label>
+      <select class="form-select" [(ngModel)]="eatingHabits">
+        <option value="">Select</option>
+        <option *ngFor="let eh of eatingHabitsOptions" [value]="eh">{{ eh }}</option>
+      </select>
+    </div>
+
+    <!-- Drinking Habits -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Drinking Habits</label>
+      <select class="form-select" [(ngModel)]="drinkingHabits">
+        <option value="">Select</option>
+        <option *ngFor="let dh of drinkingHabitsOptions" [value]="dh">{{ dh }}</option>
+      </select>
+    </div>
+
+    <!-- Smoking Habits -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Smoking Habits</label>
+      <select class="form-select" [(ngModel)]="smokingHabits">
+        <option value="">Select</option>
+        <option *ngFor="let sh of smokingHabitsOptions" [value]="sh">{{ sh }}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- Previous & Next Buttons -->
+  <div class="d-flex justify-content-end gap-3 mt-3">
+    <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+    <button class="btn-danger-red" (click)="goNext()">Save & Next</button>
+  </div>
+
+</mat-card>

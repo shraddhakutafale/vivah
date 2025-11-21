@@ -80,4 +80,25 @@ export class SelectPageCategoryComponent implements OnInit {
     this.selectedProfileType = '';
     this.selectedGender = '';
   }
+
+  selectedImage: string = 'assets/img/av1.jpg'; // default image
+selectedFile: File | null = null;
+
+// Triggered when the edit icon is clicked
+onEditImageClick(fileInput: HTMLInputElement): void {
+  fileInput.click();
+}
+
+// Preview selected image
+onImageSelected(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  if (input.files && input.files[0]) {
+    this.selectedFile = input.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.selectedImage = e.target.result;
+    };
+    reader.readAsDataURL(this.selectedFile);
+  }
+}
 }

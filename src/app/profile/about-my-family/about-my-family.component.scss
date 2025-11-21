@@ -1,0 +1,16 @@
+
+.btn-danger-red {
+  background-color: #dc3545; 
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-danger-red:hover {
+  background-color: #b02a37; 
+  transform: translateY(-2px); 
+}

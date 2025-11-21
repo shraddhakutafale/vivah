@@ -1,0 +1,48 @@
+<mat-card class="p-4 shadow-sm rounded-3">
+
+  <h5 class="fw-semibold mb-3">Location Information</h5>
+
+  <div class="row">
+    <!-- Country -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Country</label>
+      <select class="form-select" [(ngModel)]="country">
+        <option value="">Select Country</option>
+        <option *ngFor="let c of countryOptions" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <!-- Residing State -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Residing State</label>
+      <input type="text" class="form-control" placeholder="Enter State" [(ngModel)]="residingState" />
+    </div>
+
+    <!-- Residing City -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Residing City</label>
+      <input type="text" class="form-control" placeholder="Enter City" [(ngModel)]="residingCity" />
+    </div>
+
+    <!-- Citizenship -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Citizenship</label>
+      <select class="form-select" [(ngModel)]="citizenship">
+        <option value="">Select Citizenship</option>
+        <option *ngFor="let ct of citizenshipOptions" [value]="ct">{{ ct }}</option>
+      </select>
+    </div>
+
+    <!-- Current City -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Current City</label>
+      <input type="text" class="form-control" placeholder="Enter Current City" [(ngModel)]="currentCity" />
+    </div>
+  </div>
+
+ <div class="d-flex justify-content-end gap-3 mt-3">
+  <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+  <button class="btn-danger-red" (click)="goNext()">Save & Next</button>
+</div>
+
+</mat-card>

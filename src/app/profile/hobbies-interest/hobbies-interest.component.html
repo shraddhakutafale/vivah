@@ -1,0 +1,84 @@
+<mat-card class="p-4 shadow-sm rounded-3 position-relative">
+
+  <h5 class="fw-semibold mb-3">Hobbies and Interests</h5>
+
+  <!-- Inline Popup / Toast at top-right -->
+  <div *ngIf="showSavedPopup" class="card-toast">
+   Your profile is saved!
+    <button type="button" class="close-btn" (click)="closePopup()">×</button>
+  </div>
+
+  <div class="row">
+
+    <!-- Hobbies -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Choose Hobbies & Interests</label>
+      <select class="form-select" [(ngModel)]="hobbies">
+        <option value="">Select</option>
+        <option *ngFor="let h of hobbiesOptions" [value]="h">{{ h }}</option>
+      </select>
+    </div>
+
+    <!-- Music Genre -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Choose Music Genre</label>
+      <select class="form-select" [(ngModel)]="musicGenre">
+        <option value="">Select</option>
+        <option *ngFor="let m of musicGenres" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+
+    <!-- Book Type -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Type of Books You Read</label>
+      <select class="form-select" [(ngModel)]="bookType">
+        <option value="">Select</option>
+        <option *ngFor="let b of bookTypes" [value]="b">{{ b }}</option>
+      </select>
+    </div>
+
+    <!-- Movie Type -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Type of Movies You Watch</label>
+      <select class="form-select" [(ngModel)]="movieType">
+        <option value="">Select</option>
+        <option *ngFor="let m of movieTypes" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+
+    <!-- Sports -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Sports / Fitness Activities</label>
+      <select class="form-select" [(ngModel)]="sportsActivity">
+        <option value="">Select</option>
+        <option *ngFor="let s of sportsActivities" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <!-- Cuisine -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Favourite Cuisine</label>
+      <select class="form-select" [(ngModel)]="cuisine">
+        <option value="">Select</option>
+        <option *ngFor="let c of cuisines" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <!-- Languages Known -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Languages You Know</label>
+      <select class="form-select" [(ngModel)]="languagesKnown">
+        <option value="">Select</option>
+        <option *ngFor="let l of languages" [value]="l">{{ l }}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- Buttons -->
+  <div class="d-flex justify-content-end gap-3 mt-3">
+    <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+    <button class="btn-danger-red" (click)="goNext()">Save</button>
+  </div>
+
+</mat-card>

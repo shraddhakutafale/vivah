@@ -5,10 +5,23 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)  },
-
+     
     {
       path: 'about',
       loadChildren: () => import('./about/about.module').then(m => m.AboutModule)  },
+      {
+  path: 'profile',
+  loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+},
+
+
+      {
+  path: 'my-profile',
+  loadChildren: () => import('./my-profile/my-profile.module').then(m => m.MyProfileModule)
+},
+
+
+      
   {
     path: '**',
     redirectTo: 'home'

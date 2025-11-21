@@ -1,5 +1,5 @@
 <header id="header" class="header fixed-top">
- 
+
 
   <div class="branding d-flex align-items-center">
     <div class="container position-relative d-flex align-items-center justify-content-between">
@@ -11,13 +11,15 @@
       <nav id="navmenu" class="navmenu" [class.open]="isNavMenuOpen">
         <ul>
           <li style="cursor: pointer;"><a class="active" (click)="goToHome()">Home</a></li>
-          <li><a href="#login">Login</a></li>
-          <li class="profile-image">
-            <a href="#profile">
-              <img src="assets/img/logo.png" alt="Profile" class="rounded-circle"
-                style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #ffc107; transition: transform 0.3s;" />
-            </a>
-          </li>
+          <li style="cursor: pointer;"><a (click)="goToProfile()">My Profile</a></li>
+          <li style="cursor: pointer;"><a (click)="goToLogin()">Login</a></li>
+         <li class="profile-image">
+  <a routerLink="/profile">
+    <img src="assets/img/av1.jpg" alt="Profile" class="rounded-circle"
+      style="width: 28px; height: 28px; object-fit: cover; border: 2px solid #ffc107; transition: transform 0.3s;" />
+  </a>
+</li>
+
         </ul>
       </nav>
 
@@ -38,7 +40,7 @@
             style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #ffc107; transition: transform 0.3s;" />
           My Profile</a>
       </li>
-      <li ><a class="active" (click)="goToHome()">Home</a></li>
+      <li><a class="active" (click)="goToHome()">Home</a></li>
       <li><a href="#login">Login</a></li>
 
     </ul>

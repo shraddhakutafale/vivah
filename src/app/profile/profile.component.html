@@ -1,0 +1,252 @@
+<div class="profile-bg">
+  <div class="container my-4">
+    <mat-card class="p-4 shadow-sm rounded-3">
+      <!-- 🔙 Back Button -->
+      <div class="d-flex align-items-center mb-3">
+        <button
+          class="btn btn-link text-dark p-0 d-flex align-items-center fw-bold"
+          (click)="goHome()"
+          style="font-size: 1.2rem;"
+        >
+          <i
+            class="bi bi-arrow-left me-2"
+            style="font-size: 1.6rem; font-weight: bold;"
+          ></i>
+        </button>
+      </div>
+
+      <!-- Profile Header -->
+      <div class="text-center mb-4">
+        <img
+          src="assets/img/av1.jpg"
+          alt="Profile"
+          class="rounded-circle border border-warning mb-3"
+          style="width: 120px; height: 120px; object-fit: cover;"
+        />
+        <h4 class="fw-bold">My Profile</h4>
+      </div>
+
+      <div *ngIf="currentStep === 1">
+        <h5 class="fw-semibold">About Me</h5>
+        <textarea
+          class="form-control mb-3"
+          rows="3"
+          placeholder="Write something about yourself..."
+        ></textarea>
+
+        <h5 class="fw-semibold mt-4">Basic Details</h5>
+
+        <div class="row">
+          <!-- Name -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <!-- Age -->
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Age</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Enter age"
+            />
+          </div>
+
+          <!-- Height -->
+          <div class="col-md-3 mb-3">
+            <label class="form-label">Height</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Eg: 5ft 6in"
+            />
+          </div>
+
+          <!-- Weight -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Weight</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Eg: 65 kg"
+            />
+          </div>
+
+          <!-- Marital Status -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Marital Status</label>
+            <select class="form-select">
+              <option>Unmarried</option>
+              <option>Married</option>
+              <option>Divorced</option>
+              <option>Widowed</option>
+            </select>
+          </div>
+
+          <!-- Mother Tongue -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Mother Tongue</label>
+            <select class="form-select">
+              <option>Hindi</option>
+              <option>English</option>
+              <option>Gujarati</option>
+              <option>Marathi</option>
+              <option>Tamil</option>
+              <option>Telugu</option>
+            </select>
+          </div>
+
+          <!-- Physical Status -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Physical Status</label>
+            <select class="form-select">
+              <option>Normal</option>
+              <option>Physically Challenged</option>
+            </select>
+          </div>
+
+          <!-- Body Type -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Body Type</label>
+            <select class="form-select">
+              <option>Slim</option>
+              <option>Athletic</option>
+              <option>Average</option>
+              <option>Heavy</option>
+            </select>
+          </div>
+
+          <!-- Profile Created By -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Profile Created By</label>
+            <select class="form-select">
+              <option>Self</option>
+              <option>Parent</option>
+              <option>Sibling</option>
+              <option>Relative</option>
+              <option>Friend</option>
+            </select>
+          </div>
+
+          <!-- Eating Habits -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Eating Habits</label>
+            <select class="form-select">
+              <option>Vegetarian</option>
+              <option>Non-Vegetarian</option>
+              <option>Eggetarian</option>
+              <option>Jain Food</option>
+            </select>
+          </div>
+
+          <!-- Drinking Habits -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Drinking Habits</label>
+            <select class="form-select">
+              <option>No</option>
+              <option>Yes</option>
+              <option>Occasionally</option>
+            </select>
+          </div>
+
+          <!-- Smoking Habits -->
+          <div class="col-md-4 mb-3">
+            <label class="form-label">Smoking Habits</label>
+            <select class="form-select">
+              <option>No</option>
+              <option>Yes</option>
+              <option>Occasionally</option>
+            </select>
+          </div>
+
+          <!-- 🖼️ Multiple Image Upload Section -->
+          <div class="col-md-6 mb-4">
+            <label class="form-label fw-semibold">Upload Your Photos</label>
+            <div
+              class="border rounded p-3 d-flex flex-wrap gap-2"
+              style="background-color: #fafafa;"
+            >
+              <!-- Image Previews -->
+              <div
+                *ngFor="let img of selectedImages; let i = index"
+                class="position-relative"
+              >
+                <img
+                  [src]="img"
+                  class="rounded"
+                  style="width: 70px; height: 70px; object-fit: cover;"
+                />
+                <button
+                  type="button"
+                  class="btn-close position-absolute top-0 end-0 bg-white rounded-circle p-1"
+                  style="transform: translate(50%, -50%);"
+                  (click)="removeImage(i)"
+                ></button>
+              </div>
+
+              <!-- Upload Button -->
+              <div>
+                <label
+                  for="multiImageInput"
+                  class="btn btn-outline-secondary d-flex flex-column align-items-center justify-content-center"
+                  style="width: 70px; height: 70px; cursor: pointer;"
+                >
+                  <i class="bi bi-plus-lg"></i>
+                </label>
+                <input
+                  type="file"
+                  id="multiImageInput"
+                  multiple
+                  accept="image/*"
+                  (change)="onImagesSelected($event)"
+                  hidden
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🔘 Save & Next -->
+        <div class="text-end">
+          <button class="btn btn-danger" (click)="goNext()">Save & Next</button>
+        </div>
+      </div>
+<!-- Other Steps -->
+<div *ngIf="currentStep === 2">
+  <app-religion-information  (previousStep)="goBack()"  (nextStep)="goNext()"></app-religion-information>
+</div>
+
+<div *ngIf="currentStep === 3">
+  <app-professional-information  (previousStep)="goBack()"  (nextStep)="goNext()"></app-professional-information>
+</div>
+
+<div *ngIf="currentStep === 4">
+  <app-location  (previousStep)="goBack()"  (nextStep)="goNext()"></app-location>
+</div>
+
+<div *ngIf="currentStep === 5">
+  <app-family-details  (previousStep)="goBack()"  (nextStep)="goNext()"></app-family-details>
+</div>
+
+<div *ngIf="currentStep === 6">
+  <app-about-my-family  (previousStep)="goBack()"  (nextStep)="goNext()"></app-about-my-family>
+</div>
+
+<!-- New Step: Partner Preference -->
+<div *ngIf="currentStep === 7">
+  <app-partners-preference  (previousStep)="goBack()"  (nextStep)="goNext()"></app-partners-preference>
+</div>
+
+<!-- Last Step: Hobbies & Interests -->
+<div *ngIf="currentStep === 8">
+  <app-hobbies-interest  (previousStep)="goBack()"></app-hobbies-interest>
+</div>
+
+    </mat-card>
+  </div>
+</div>

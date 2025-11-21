@@ -1,0 +1,65 @@
+<mat-card class="p-4 shadow-sm rounded-3">
+
+  <h5 class="fw-semibold mb-3">Professional Information</h5>
+
+  <div class="row">
+    <!-- Highest Education -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Highest Education</label>
+      <select class="form-select" [(ngModel)]="highestEducation">
+        <option value="">Select Education</option>
+        <option *ngFor="let e of educationOptions" [value]="e">{{ e }}</option>
+      </select>
+    </div>
+
+    <!-- College/Institution -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">College / Institution</label>
+      <input type="text" class="form-control" placeholder="Enter college/institution" [(ngModel)]="collegeName"/>
+    </div>
+
+    <!-- Employed In -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Employed In</label>
+      <select class="form-select" [(ngModel)]="employedIn">
+        <option value="">Select</option>
+        <option *ngFor="let emp of employedInOptions" [value]="emp">{{ emp }}</option>
+      </select>
+    </div>
+
+    <!-- Occupation -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Occupation</label>
+      <input type="text" class="form-control" placeholder="Enter Occupation" [(ngModel)]="occupation"/>
+    </div>
+
+    <!-- Organization Name -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Organization Name</label>
+      <input type="text" class="form-control" placeholder="Enter Organization Name" [(ngModel)]="organizationName"/>
+    </div>
+
+    <!-- Currency Type -->
+<div class="col-md-4 mb-3">
+      <label class="form-label">Currency Type</label>
+      <select class="form-select" [(ngModel)]="currencyType">
+        <option value="">Select</option>
+        <option *ngFor="let c of currencyOptions" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <!-- Annual Income -->
+    <div class="col-md-4 mb-3">
+      <label class="form-label">Annual Income</label>
+      <select class="form-select" [(ngModel)]="annualIncome">
+        <option value="">Select</option>
+        <option *ngFor="let a of annualIncomeOptions" [value]="a">{{ a }}</option>
+      </select>
+    </div>
+  </div>
+
+ <div class="d-flex justify-content-end gap-3 mt-3">
+  <button class="btn-danger-red" (click)="goPrevious()">Previous</button>
+  <button class="btn-danger-red" (click)="goNext()">Save & Next</button>
+</div>
+</mat-card>

@@ -2,7 +2,24 @@
     text-decoration: none; /* Removes underline from the link */
     border: none; /* Removes any border */
     box-shadow: none; /* Ensures there's no shadow effect */
-  }
+  }/* Fix Header Properly */
+.header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1200;   /* Keep above everything */
+    background: black;  /* Prevent transparency */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    height: 60px !important;        /* set your preferred height */
+
+}
+
+.navmenu ul li a {
+    padding: 10px 15px;   /* reduce padding */
+    line-height: 1;       /* reduce height */
+    font-size: 15px;      /* optional smaller text */
+}
 
 
 /* Sidebar Styles */
