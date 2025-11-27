@@ -49,6 +49,6 @@ export class HeaderComponent {
   }
     goToLogin(): void {
     this.closeNavMenu(); // Close the sidebar
-    this.router.navigate(['/']); // Navigate to the home page
+    this.router.navigate(['/login']); // Navigate to the home page
   }
 }

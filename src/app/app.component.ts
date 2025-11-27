@@ -17,7 +17,7 @@ export class AppComponent {
       .subscribe((event: NavigationEnd) => {
 
         // HIDE HEADER on BOTH: /profile AND /my-profile
-        const hideRoutes = ['/profile'];
+        const hideRoutes = ['/profile', '/login', '/register'];
 
         this.showHeader = !hideRoutes.some(route =>
           event.url.startsWith(route)

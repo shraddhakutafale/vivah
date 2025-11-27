@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,10 @@ const routes: Routes = [
   loadChildren: () => import('./my-profile/my-profile.module').then(m => m.MyProfileModule)
 },
 
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
+      
       
   {
     path: '**',

@@ -10,10 +10,18 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './auth/auth.interceptor';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    
     
   ],
   imports: [
@@ -21,12 +29,23 @@ import { authInterceptor } from './auth/auth.interceptor';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,   // <-- ADD THIS
+    ReactiveFormsModule ,  // ✔ ADD THIS
 
     LayoutModule,
     BrowserAnimationsModule,
+ToastrModule.forRoot({
+  positionClass: 'toast-top-right',
+  closeButton: true,
+  progressBar: true,
+  timeOut: 3000
+}),
+
+    
     RouterModule.forRoot([], {
       scrollPositionRestoration: 'top'
     }),
+
+    
   ],
 providers: [
   provideHttpClient(withInterceptors([authInterceptor]))

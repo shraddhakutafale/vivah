@@ -1,0 +1,31 @@
+<div class="login-page">
+
+  <div class="overlay"></div>
+
+  <div class="login-card">
+    <h3 class="text-center mb-4">Login</h3>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+      </div>
+
+      <div class="mb-3">
+        <label>Password</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Enter your password">
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Login</button>
+
+    <p class="text-center mt-3">
+  Don't have an account?
+  <a (click)="goToSignup()" style="cursor:pointer">Sign Up</a>
+</p>
+
+
+    </form>
+  </div>
+
+</div>
