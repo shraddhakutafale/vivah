@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,24 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isNavMenuOpen = false; // Flag to toggle sidebar visibility
+  isNavMenuOpen = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private toast: ToastrService
+  ) {}
 
-  // Function to toggle the sidebar visibility
   toggleNavMenu(): void {
     this.isNavMenuOpen = !this.isNavMenuOpen;
   }
 
-  // Function to close the sidebar when a menu item is clicked
   closeNavMenu(): void {
     this.isNavMenuOpen = false;
   }
 
-  // Close sidebar when clicking outside of the sidebar
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent): void {
-    // Check if the click is outside the sidebar and the toggle button
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.querySelector('.mobile-nav-toggle');
     if (sidebar && toggleButton && !sidebar.contains(event.target as Node) && !toggleButton.contains(event.target as Node)) {
@@ -32,23 +34,40 @@ export class HeaderComponent {
     }
   }
 
-  // Close the sidebar if clicked inside the sidebar
   onSidebarClick(event: MouseEvent): void {
-    event.stopPropagation(); // Prevent click from closing the sidebar immediately
+    event.stopPropagation();
   }
 
-  // Function to close the sidebar and navigate to the home page
   goToHome(): void {
-    this.closeNavMenu(); // Close the sidebar
-    this.router.navigate(['/']); // Navigate to the home page
+    this.closeNavMenu();
+    this.router.navigate(['/']);
   }
 
-    goToProfile(): void {
-    this.closeNavMenu(); // Close the sidebar
-    this.router.navigate(['/my-profile']); // Navigate to the home page
+  goToProfile(): void {
+    this.closeNavMenu();
+    this.router.navigate(['/my-profile']);
   }
-    goToLogin(): void {
-    this.closeNavMenu(); // Close the sidebar
-    this.router.navigate(['/login']); // Navigate to the home page
+
+  goToLogin(): void {
+    this.closeNavMenu();
+    this.router.navigate(['/login']);
+  }
+
+  goToCandidate() {
+    this.closeNavMenu();
+    this.router.navigate(['/candidate']);
+  }
+
+  // 🔥 Login Check
+  isLoggedIn() {
+    return !!this.auth.getToken();
+  }
+
+  // 🔥 Logout Function
+  logout() {
+    this.auth.logout();
+    this.toast.success('Logged out successfully');
+    this.router.navigate(['/login']);
+    this.closeNavMenu();
   }
 }

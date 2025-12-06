@@ -1,0 +1,66 @@
+<section id="hero" class="hero section dark-background">
+    <div id="hero-carousel" class="carousel slide mt-5" data-bs-ride="carousel" data-bs-interval="1000">
+
+        <div class="carousel-item active">
+            <img src="assets/img/img-1.jpg" alt="" class="img-fluid d-block w-100">
+            <div style="margin-top: 50px;"
+                class="carousel-container h-100 d-flex justify-content-center align-items-center">
+                <h2><span>Find Your</span> Life Partner</h2>
+                <p>I am looking for a life partner to share my journey. Find someone special who will be your perfect
+                    match.</p>
+                <div>
+                    <a style="cursor: pointer;" (click)="selectPageCategory()" class="btn-get-started">Add Candidate</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Add Proper Gap Below Hero Section -->
+<section class="container  section-gap section-bg-white ">
+
+    <div class="row">
+
+        <!-- LEFT SIDE – Advertisement -->
+        <div class="col-md-3">
+            <div class="mb-3 ">
+                <img src="assets/img/img-1.jpg" class="img-fluid rounded shadow ad-img" alt="">
+            </div>
+
+            <div class="mb-3">
+                <img src="assets/img/img-1.jpg" class="img-fluid rounded shadow ad-img" alt="">
+            </div>
+
+            <div class="mb-3">
+                <img src="assets/img/img-1.jpg" class="img-fluid rounded shadow ad-img" alt="">
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE – Candidates -->
+        <div class="col-md-9">
+
+            <div class="row">
+               <div class="col-md-4 mb-4" *ngFor="let item of candidates">
+  <div class="card shadow">
+    <img [src]="item.coverImage || 'assets/img/av2.jpg'" 
+         (error)="onImgError($event)" class="card-img-top" alt="">
+
+    <div class="card-body">
+      <h5 class="card-title">{{ item.name }}</h5>
+
+      <p class="card-text">
+        {{ item.age ? item.age + ' yrs' : '26 yrs' }},
+        {{ item.residingCity || item.currentCity || 'Mumbai' }}
+      </p>
+    </div>
+  </div>
+</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

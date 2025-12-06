@@ -54,6 +54,11 @@ saveStep1() {
   this.userService.createCandidate(payload).subscribe({
     next: (res) => {
       console.log('Candidate saved', res);
+
+      if (res?.data) {
+        localStorage.setItem("candidateId", res.data); 
+      }
+
       this.currentStep++;
     },
     error: (err) => console.error(err)
@@ -61,7 +66,6 @@ saveStep1() {
 }
 
 
-  // Step navigation
   goBack() {
     this.currentStep--;
   }

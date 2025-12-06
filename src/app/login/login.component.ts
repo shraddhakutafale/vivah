@@ -31,13 +31,22 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (res: any) => {
-        console.log(res);
-        this.toast.success('Login Successful');
-        localStorage.setItem("token", res.access_token);
-        this.router.navigate(['/dashboard']);
+
+        if (res.status) {
+          // Save token
+          localStorage.setItem("token", res.access_token);
+
+          // Save user details (VERY IMPORTANT)
+          localStorage.setItem("user", JSON.stringify(res.user));
+
+          this.toast.success('Login Successful');
+
+          // Redirect
+          this.router.navigate(['/candidate']);
+        }
       },
       error: err => {
-        this.toast.error(err.error.message || "Login failed");
+        this.toast.error(err.error?.message || "Login failed");
       }
     });
   }

@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CandidateComponent } from './candidate/candidate.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    CandidateComponent,
     
     
   ],

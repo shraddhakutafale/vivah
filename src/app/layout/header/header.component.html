@@ -11,14 +11,24 @@
       <nav id="navmenu" class="navmenu" [class.open]="isNavMenuOpen">
         <ul>
           <li style="cursor: pointer;"><a class="active" (click)="goToHome()">Home</a></li>
+           <li style="cursor: pointer;">
+    <a (click)="goToCandidate()">Candidate</a>
+  </li>
           <li style="cursor: pointer;"><a (click)="goToProfile()">My Profile</a></li>
           <li style="cursor: pointer;"><a (click)="goToLogin()">Login</a></li>
-         <li class="profile-image">
-  <a routerLink="/profile">
-    <img src="assets/img/av1.jpg" alt="Profile" class="rounded-circle"
-      style="width: 28px; height: 28px; object-fit: cover; border: 2px solid #ffc107; transition: transform 0.3s;" />
+          <li class="profile-image">
+            <a routerLink="/profile">
+              <img src="assets/img/av1.jpg" alt="Profile" class="rounded-circle"
+                style="width: 28px; height: 28px; object-fit: cover; border: 2px solid #ffc107; transition: transform 0.3s;" />
+            </a>
+          </li>
+
+ <li style="cursor: pointer;">
+  <a (click)="logout()">
+    <i class="bi bi-power" style="font-size: 22px;"></i>
   </a>
 </li>
+
 
         </ul>
       </nav>

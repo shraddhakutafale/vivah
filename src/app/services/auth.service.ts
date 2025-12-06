@@ -10,13 +10,14 @@ import { RestService } from './rest.service';
 export class AuthService {
 
   private http = inject(HttpClient);
-  private API_URL = 'http://localhost/exiaa-material-api/webapi/user';
   private tokenKey = 'token';
-   protected readonly restService = inject(RestService);
+  private userKey = 'user';   // 👈 ADD THIS
+  protected readonly restService = inject(RestService);
 
   constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
-  /** Get token from localStorage */
+  /** --------------------- TOKEN METHODS --------------------- */
+
   getToken(): string | null {
     if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem(this.tokenKey);
@@ -24,27 +25,47 @@ export class AuthService {
     return null;
   }
 
-  /** REGISTER USER */
-  register(data:any): Observable<any> {
-       return this.restService.post('communitee/registercommunitee', data);
-  }
-
-  /** LOGIN USER */
- login(data: any) {
-       return this.restService.post('communitee/communiteelogin', data);
-}
-
-  /** SAVE TOKEN AFTER LOGIN */
   saveToken(token: string) {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem(this.tokenKey, token);
     }
   }
 
-  /** LOGOUT */
+  /** --------------------- USER DATA METHODS --------------------- */
+
+  /** Save complete user data returned during login */
+  saveUser(user: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(this.userKey, JSON.stringify(user));
+    }
+  }
+
+  /** Get stored user data */
+  getUser() {
+    if (isPlatformBrowser(this.platformId)) {
+      const user = localStorage.getItem(this.userKey);
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
+  }
+
+  /** Remove user on logout */
   logout() {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem(this.tokenKey);
+      localStorage.removeItem(this.userKey);
     }
+  }
+
+  /** --------------------- AUTH APIS --------------------- */
+
+  /** REGISTER USER */
+  register(data: any): Observable<any> {
+    return this.restService.post('communitee/registercommunitee', data);
+  }
+
+  /** LOGIN USER */
+  login(data: any) {
+    return this.restService.post('communitee/communiteelogin', data);
   }
 }

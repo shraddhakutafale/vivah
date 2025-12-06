@@ -65,32 +65,34 @@ export class ReligionInformationComponent {
     this.previousStep.emit();
   }
 
-  goNext() {
-    if (!this.candidateId) {
-      console.error("candidateId is missing! Cannot save religion info.");
-      return;
-    }
+goNext() {
+  const candidateId = localStorage.getItem("candidateId");
 
-    const payload = {
-      candidateId: this.candidateId,
-      religion: this.religion,
-      caste: this.caste,
-      community: this.community,
-      stars: this.stars,
-      rashi: this.rashi,
-      zodiac: this.zodiac,
-      dosh: this.havingDosh,
-      otherCommunities: this.willingOtherCommunity ? 1 : 0
-    };
-
-    // ⛔ Wrong earlier: this.userService.createCandidate(...)
-    // ✅ Correct API call for religion info
-    this.userService.createCandidate(payload).subscribe({
-      next: (res) => {
-        console.log("Religion info saved", res);
-        this.nextStep.emit();
-      },
-      error: (err) => console.error("Religion API Error", err)
-    });
+  if (!candidateId) {
+    console.error("candidateId missing — Step-1 not saved.");
+    return;
   }
+
+const payload = {
+  candidateId: candidateId,
+  religion: this.religion,
+  cast: this.caste,                  
+  community: this.community,
+  stars: this.stars,
+  rashi: this.rashi,
+  zodiac: this.zodiac,
+  dosh: this.havingDosh,             
+  otherCommunities: this.willingOtherCommunity ? 1 : 0,
+};
+
+
+  this.userService.createCandidate(payload).subscribe({
+    next: (res) => {
+      console.log("Religion info updated", res);
+      this.nextStep.emit();
+    },
+    error: (err) => console.error(err)
+  });
+}
+
 }

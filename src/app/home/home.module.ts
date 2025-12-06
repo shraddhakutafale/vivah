@@ -6,12 +6,14 @@ import { HomeComponent } from './home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SelectPageCategoryComponent } from './select-page-category/select-page-category.component';
+import { AddCandidateComponent } from './add-candidate/add-candidate.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     SelectPageCategoryComponent,
+    AddCandidateComponent,
   ],
   imports: [
     CommonModule,

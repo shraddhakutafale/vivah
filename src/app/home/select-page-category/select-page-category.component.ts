@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-select-page-category',
@@ -8,97 +11,142 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SelectPageCategoryComponent implements OnInit {
 
-  isGenderChipsVisible: boolean = false;
-  isFormVisible: boolean = false;
-  isContinueButtonVisible: boolean = false; // Controls the visibility of the Continue button
-  genderHeading: string = '';
-  formHeading: string = ''; // Heading in the form
-  selectedGender: string = '';
-  selectedProfileType: string = '';
+  // --- UI flags ---
+  isGenderChipsVisible = false;
+  isFormVisible = false;
+  isContinueButtonVisible = false;
 
-  constructor(private modalService: NgbModal) { }
+  genderHeading = '';
+  formHeading = '';
+  selectedGender = '';
+  selectedUserType = '';  
 
-  ngOnInit(): void { }
+  userForm!: FormGroup;
+  private readonly toast = inject(ToastrService);
+  
+  
+
+  constructor(
+    private modalService: NgbModal,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.userForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: [''],
+      mobileNo: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      dob: [''],
+      email: ['', Validators.email],
+      password: ['', Validators.required]
+    });
+  }
 
   closeModal() {
     this.modalService.dismissAll();
   }
 
-  // Show gender chips or continue button based on profile type selection
-  showGenderChips(profileType: string): void {
-    this.selectedProfileType = profileType;
-    this.isContinueButtonVisible = false; // Hide continue button initially
+  showGenderChips(userType: string): void {
+    this.selectedUserType = userType;
+    this.isContinueButtonVisible = false;
 
-    // Show gender chips for Myself, My Friend, and My Relative
-    if (profileType === 'Myself' || profileType === 'My Friend' || profileType === 'My Relative') {
+    if (['Myself', 'My Friend', 'My Relative'].includes(userType)) {
       this.isGenderChipsVisible = true;
-      this.genderHeading = `Select Gender `;
-      this.isFormVisible = false; // Ensure form is hidden when selecting profile type
-    } else if (profileType === 'My Son' || profileType === 'My Brother' || profileType === 'My Daughter' || profileType === 'My Sister') {
-      // For these, show the Continue button
-      this.isGenderChipsVisible = false;
-      this.isContinueButtonVisible = true;
-      this.genderHeading = `Select Gender `;
+      this.genderHeading = 'Select Gender';
+      this.isFormVisible = false;
     } else {
       this.isGenderChipsVisible = false;
-      this.isFormVisible = false;
-      this.selectedGender = '';
+      this.isContinueButtonVisible = true;
     }
   }
 
+ 
   selectGender(gender: string): void {
     this.selectedGender = gender;
     this.isGenderChipsVisible = false;
-    this.isFormVisible = true; // Show the form after gender selection
+    this.isFormVisible = true;
 
-    // Set form heading based on profile type and gender
-    if (this.selectedProfileType === 'Myself') {
+    if (this.selectedUserType === 'Myself') {
       this.formHeading = 'Your Name';
-    } else if (this.selectedProfileType === 'My Friend' || this.selectedProfileType === 'My Relative') {
+    } else if (['My Friend', 'My Relative'].includes(this.selectedUserType)) {
       this.formHeading = gender === 'Male' ? 'His Name' : 'Her Name';
     }
   }
 
+ 
   continueToForm(): void {
-    // Based on profile type, determine the gender and form heading
-    this.isGenderChipsVisible = false; // Hide gender chips immediately when continuing
-
-    if (this.selectedProfileType === 'My Son' || this.selectedProfileType === 'My Brother') {
-      this.formHeading = 'His Name'; // Set the form heading to "His Name"
-    } else if (this.selectedProfileType === 'My Sister' || this.selectedProfileType === 'My Daughter') {
-      this.formHeading = 'Her Name'; // Set the form heading to "Her Name"
+    if (['My Son', 'My Brother'].includes(this.selectedUserType)) {
+      this.formHeading = 'His Name';
+    } else {
+      this.formHeading = 'Her Name';
     }
 
-    this.isFormVisible = true; // Show the form
-    this.isContinueButtonVisible = false; // Hide continue button after clicking
+    this.isFormVisible = true;
+    this.isContinueButtonVisible = false;
   }
 
+ 
   goBack(): void {
     this.isFormVisible = false;
     this.isGenderChipsVisible = false;
-    this.isContinueButtonVisible = false; // Hide continue button when going back
-    this.selectedProfileType = '';
+    this.isContinueButtonVisible = false;
+
+    this.selectedUserType = ''; 
     this.selectedGender = '';
   }
 
-  selectedImage: string = 'assets/img/av1.jpg'; // default image
-selectedFile: File | null = null;
+ 
+  selectedImage: string = 'assets/img/av1.jpg';
+  selectedFile: File | null = null;
 
-// Triggered when the edit icon is clicked
-onEditImageClick(fileInput: HTMLInputElement): void {
-  fileInput.click();
-}
-
-// Preview selected image
-onImageSelected(event: Event): void {
-  const input = event.target as HTMLInputElement;
-  if (input.files && input.files[0]) {
-    this.selectedFile = input.files[0];
-    const reader = new FileReader();
-    reader.onload = (e: any) => {
-      this.selectedImage = e.target.result;
-    };
-    reader.readAsDataURL(this.selectedFile);
+  onEditImageClick(fileInput: HTMLInputElement): void {
+    fileInput.click();
   }
+
+  onImageSelected(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      this.selectedFile = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+      };
+    }
+  }
+
+ 
+ saveUser() {
+  if (this.userForm.invalid) {
+    this.userForm.markAllAsTouched();
+    this.toast.error('Please fill all required fields', 'Validation Error');
+    return;
+  }
+
+  const payload = {
+    userName: this.userForm.value.firstName,
+    lastName: this.userForm.value.lastName,
+    dob: this.userForm.value.dob,
+    mobNo: this.userForm.value.mobileNo,
+    email: this.userForm.value.email,
+    password: this.userForm.value.password,
+    userType: this.selectedUserType,
+    gender: this.selectedGender
+  };
+
+  this.userService.addUser(payload).subscribe({
+    next: (res: any) => {
+      this.toast.success('User Saved Successfully!', 'Success');
+      this.closeModal();
+    },
+    error: (err) => {
+      this.toast.error('Something went wrong', 'Error');
+    }
+  });
 }
+
 }
